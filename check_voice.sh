@@ -63,9 +63,12 @@ for i in $(seq -f "%03g" 1 599); do
     if isValidURL $URL1; then
         echoerr "FOUND $URL1"
         writeList $URL1 $URLP2
-    elif isValidURL $URL2; then
+    fi
+    if isValidURL $URL2; then
         echoerr "FOUND $URL2"
         writeList $URL2 $URLP2"a"
+    else
+        echoerr "NONE $URL1"
     fi
 done
 
@@ -91,13 +94,15 @@ for pre in ${PREFIX[@]}; do
         if isValidURL $URL2; then
             echoerr "FOUND $URL2"
             writeList $URL2 $URLP2"a"
-        fi
+        else
+        echoerr "NONE $URL1"
+    fi
     done
 done
 
 # {ID}_navi_(\d|\d\d|\d\d\d)a{0,1}\.mp3
 for i in $(seq 1 99); do
-    URLP2="$_navi_$i"
+    URLP2="_navi_$i"
     URL1=$URLP1$CHARA_ID$URLP2$EXT      #without 'a'
     URL2=$URLP1$CHARA_ID$URLP2"a"$EXT   #with 'a'
 
@@ -108,6 +113,8 @@ for i in $(seq 1 99); do
     if isValidURL $URL2; then
         echoerr "FOUND $URL2"
         writeList $URL2 $URLP2"a"
+    else
+        echoerr "NONE $URL1"
     fi
 done
 

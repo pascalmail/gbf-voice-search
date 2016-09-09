@@ -1,7 +1,10 @@
 File name pattern
 
-Normal
+
 {ID}_v_(\d\d\d)a{0,1}\.mp3
+{ID}_v_(\d\d\d)_(a|b)\.mp3
+
+
 {ID}_mypage(\d)a{0,1}\.mp3
 {ID}_birthday(\d)a{0,1}\.mp3
 {ID}_cutin(\d)a{0,1}\.mp3
@@ -9,9 +12,6 @@ Normal
 {ID}_abilty_them(\d)a{0,1}\.mp3
 {ID}_abilty_win(\d)a{0,1}\.mp3
 {ID}_abilty_lose(\d)a{0,1}\.mp3
-
-
-Event
 {ID}_navi_(\d|\d\d|\d\d\d)a{0,1}\.mp3
 
 

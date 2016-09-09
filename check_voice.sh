@@ -44,9 +44,9 @@ echo "<head>"
 echo "</head>"
 echo "<body>"
 echo "<h1>$CHARA_NAME VOICE BANK</h1>"
-echo "Name: $CHARA_NAME"
-echo "ID: $CHARA_ID"
-echo "Rarity: $RARITY"
+echo "<p>Name: $CHARA_NAME</p>"
+echo "<p>ID: $CHARA_ID</p>"
+# echo "Rarity: $RARITY"
 echo "<table>"
 echo "<tr>"
 echo "<th>Suffix</th>"
@@ -56,33 +56,38 @@ echo "</tr>"
 
 # {ID}_v_(\d\d\d)a{0,1}\.mp3
 # {ID}_v_(\d\d\d)_(a|b)\.mp3
-for i in $(seq -f "%03g" 1 599); do
-    URLP2="_v_$i"
-    URL1=$URLP1$CHARA_ID$URLP2$EXT
-    URL2=$URLP1$CHARA_ID$URLP2"a"$EXT
+# for i in $(seq -f "%03g" 1 599); do
+#     URLP2="_v_$i"
+#     URL1=$URLP1$CHARA_ID$URLP2$EXT
+#     URL2=$URLP1$CHARA_ID$URLP2"a"$EXT
 
-    URL3=$URLP1$CHARA_ID$URLP2"_a"$EXT
-    URL4=$URLP1$CHARA_ID$URLP2"_b"$EXT
-
-    if isValidURL $URL1; then
-        echoerr "FOUND $URL1"
-        writeList $URL1 $URLP2
-    fi
-    if isValidURL $URL2; then
-        echoerr "FOUND $URL2"
-        writeList $URL2 $URLP2"a"
-    fi
-    if isValidURL $URL3; then
-        echoerr "FOUND $URL3"
-        writeList $URL3 $URLP2"_a"
-    fi
-    if isValidURL $URL4; then
-        echoerr "FOUND $URL4"
-        writeList $URL4 $URLP2"_b" 
-    # else
-    #     echoerr "NONE $URL1"
-    fi
-done
+#     URL3=$URLP1$CHARA_ID$URLP2"_a"$EXT
+#     URL4=$URLP1$CHARA_ID$URLP2"_b"$EXT
+#     FOUND="NO"
+#     if isValidURL $URL1; then
+#         echoerr "FOUND $URL1"
+#         writeList $URL1 $URLP2
+#         FOUND="YES"
+#     fi
+#     if isValidURL $URL2; then
+#         echoerr "FOUND $URL2"
+#         writeList $URL2 $URLP2"a"
+#         FOUND="YES"
+#     fi
+#     if isValidURL $URL3; then
+#         echoerr "FOUND $URL3"
+#         writeList $URL3 $URLP2"_a"
+#         FOUND="YES"
+#     fi
+#     if isValidURL $URL4; then
+#         echoerr "FOUND $URL4"
+#         writeList $URL4 $URLP2"_b" 
+#         FOUND="YES"
+#     fi 
+#     if [ $FOUND="NO" ]; then
+#         echoerr "NONE $URL1"
+#     fi
+# done
 
 
 # {ID}_mypage(\d)a{0,1}\.mp3
@@ -99,15 +104,19 @@ for pre in ${PREFIX[@]}; do
         URL1=$URLP1$CHARA_ID$URLP2$EXT      #without 'a'
         URL2=$URLP1$CHARA_ID$URLP2"a"$EXT   #with 'a'
 
+        FOUND="NO"
         if isValidURL $URL1; then
             echoerr "FOUND $URL1"
             writeList $URL1 $URLP2
+            FOUND="YES"
         fi
         if isValidURL $URL2; then
             echoerr "FOUND $URL2"
             writeList $URL2 $URLP2"a"
-        # else
-        #     echoerr "NONE $URL1"
+            FOUND="YES"
+        fi
+        if [ $FOUND="NO" ]; then
+            echoerr "NONE $URL1"
         fi
     done
 done
@@ -118,15 +127,19 @@ for i in $(seq 1 99); do
     URL1=$URLP1$CHARA_ID$URLP2$EXT      #without 'a'
     URL2=$URLP1$CHARA_ID$URLP2"a"$EXT   #with 'a'
 
+    FOUND="NO"
     if isValidURL $URL1; then
         echoerr "FOUND $URL1"
         writeList $URL1 $URLP2
+        FOUND="YES"
     fi
     if isValidURL $URL2; then
         echoerr "FOUND $URL2"
         writeList $URL2 $URLP2"a"
-    # else
-    #     echoerr "NONE $URL1"
+        FOUND="YES"
+    fi
+    if [ $FOUND="NO" ]; then
+        echoerr "NONE $URL1"
     fi
 done
 

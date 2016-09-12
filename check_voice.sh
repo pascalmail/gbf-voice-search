@@ -84,7 +84,7 @@ for i in $(seq -f "%03g" 1 599); do
         writeList $URL4 $URLP2"_b" 
         FOUND="YES"
     fi 
-    if [ $FOUND="NO" ]; then
+    if [ $FOUND == "NO" ]; then
         echoerr "NONE $URL1"
     fi
 done
@@ -95,9 +95,9 @@ done
 # {ID}_cutin(\d)a{0,1}\.mp3
 # {ID}_abilty_us(\d)a{0,1}\.mp3
 # {ID}_abilty_them(\d)a{0,1}\.mp3
-# {ID}_abilty_win(\d)a{0,1}\.mp3
-# {ID}_abilty_lose(\d)a{0,1}\.mp3
-PREFIX=(_mypage _birthday _cutin _ability_us _abilty_them _abilty_win _abilty_lose)
+# {ID}_win(\d)a{0,1}\.mp3
+# {ID}_lose(\d)a{0,1}\.mp3
+PREFIX=(_mypage _birthday _cutin _ability_us _abilty_them _win _lose)
 for pre in ${PREFIX[@]}; do
     for i in $(seq 1 9); do
         URLP2="$pre$i"
@@ -115,7 +115,7 @@ for pre in ${PREFIX[@]}; do
             writeList $URL2 $URLP2"a"
             FOUND="YES"
         fi
-        if [ $FOUND="NO" ]; then
+        if [ $FOUND == "NO" ]; then
             echoerr "NONE $URL1"
         fi
     done
@@ -138,7 +138,7 @@ for i in $(seq 1 99); do
         writeList $URL2 $URLP2"a"
         FOUND="YES"
     fi
-    if [ $FOUND="NO" ]; then
+    if [ $FOUND == "NO" ]; then
         echoerr "NONE $URL1"
     fi
 done

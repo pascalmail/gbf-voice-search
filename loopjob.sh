@@ -4,5 +4,5 @@ cat joblist.txt | while read -r line; do
         name=${l[1]}; 
         echo $id;
         echo $name;
-        sh check_voice.sh $id $name > "$id"_"$name"_voice.html;
+        sh check_voice.sh $id $name > FOUND/"$id"_"$name"_voice.html;
     done
